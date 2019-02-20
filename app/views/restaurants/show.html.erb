@@ -1,0 +1,21 @@
+<h1><%= @restaurant.name %></h1>
+
+<p> Address: <%= @restaurant.address %></p>
+<p> Cuisine: <%= @restaurant.category %></p>
+<p> Phone: <%= @restaurant.phone_number%></p>
+
+<p> Reviews for <%= @restaurant.name %>:</p>
+<ul>
+  <% if @restaurant.reviews.length == 0 %>
+  <p> There are no reviews yet </p>
+  <% else %>
+    <% @restaurant.reviews.each do |r| %>
+    <li> "<%=r.content %>" </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<p> <%= link_to 'Leave a review',  new_restaurant_review_path(@restaurant) %> </p>
+
+
+<p> <%= link_to 'Back to all restaurants', restaurants_path %> </p>
